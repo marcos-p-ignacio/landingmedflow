@@ -922,8 +922,10 @@ article p {
   inset: 0;
   z-index: 100;
   display: grid;
-  place-items: center;
-  padding: 28px;
+  align-items: start;
+  justify-items: center;
+  padding: 24px;
+  overflow-y: auto;
 }
 
 .demo-backdrop {
@@ -936,7 +938,8 @@ article p {
 .demo-panel {
   position: relative;
   width: min(1340px, 100%);
-  max-height: min(920px, calc(100vh - 56px));
+  max-height: calc(100dvh - 48px);
+  min-height: 0;
   display: grid;
   grid-template-columns: 0.95fr 1.05fr;
   overflow: hidden;
@@ -952,8 +955,9 @@ article p {
   padding: 58px 48px;
   color: #fff;
   background:
-    linear-gradient(145deg, rgba(20, 184, 212, 0.14), transparent 42%),
-    linear-gradient(160deg, #006c62, #07815f 55%, #0a5f59);
+    radial-gradient(circle at 20% 20%, rgba(20, 184, 212, 0.28), transparent 34%),
+    linear-gradient(145deg, rgba(22, 185, 129, 0.2), transparent 48%),
+    linear-gradient(160deg, #092636, #0a3d4f 58%, #0788a2);
 }
 
 .demo-intro img {
@@ -985,6 +989,7 @@ article p {
   display: grid;
   gap: 22px;
   padding: 54px 48px 48px;
+  min-height: 0;
   overflow-y: auto;
 }
 
@@ -1024,8 +1029,7 @@ article p {
 }
 
 .demo-form label {
-  display: grid;
-  gap: 9px;
+  display: block;
   color: var(--navy);
   font-size: 1rem;
   font-weight: 700;
@@ -1038,6 +1042,7 @@ article p {
 .demo-form input {
   width: 100%;
   min-height: 60px;
+  margin-top: 9px;
   border: 1px solid #cbd7de;
   border-radius: var(--radius);
   padding: 0 18px;
