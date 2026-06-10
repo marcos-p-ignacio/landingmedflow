@@ -39,7 +39,7 @@
           <a href="#contato">Contato</a>
         </div>
 
-        <a class="btn btn-primary nav-cta" href="#contato">Solicitar demonstração</a>
+        <button class="btn btn-primary nav-cta" type="button" data-demo-open>Solicitar demonstração</button>
       </nav>
     </header>
 
@@ -53,7 +53,7 @@
               melhorar decisões e dar mais controle às equipes de saúde.
             </p>
             <div class="hero-actions" aria-label="Ações principais">
-              <a class="btn btn-primary" href="#contato">Solicitar demonstração</a>
+              <button class="btn btn-primary" type="button" data-demo-open>Solicitar demonstração</button>
               <a class="btn btn-secondary" href="#solucao">Conhecer a solução</a>
             </div>
             <div class="proof-strip" aria-label="Prova de valor">
@@ -323,12 +323,57 @@
             <p>Veja como o MedFlow pode organizar processos, reduzir retrabalho e dar mais controle à sua equipe.</p>
           </div>
           <div class="cta-actions">
-            <a class="btn btn-primary light" href="mailto:contato@medflow.ia.br?subject=Solicitar%20demonstra%C3%A7%C3%A3o%20MedFlow">Solicitar demonstração</a>
+            <button class="btn btn-primary light" type="button" data-demo-open>Solicitar demonstração</button>
             <a class="btn btn-ghost" href="mailto:contato@medflow.ia.br?subject=Contato%20MedFlow">Falar com a equipe</a>
           </div>
         </div>
       </section>
     </main>
+
+    <div class="demo-modal" role="dialog" aria-modal="true" aria-labelledby="demo-title" hidden data-demo-modal>
+      <div class="demo-backdrop" data-demo-close></div>
+      <section class="demo-panel">
+        <div class="demo-intro">
+          <img src="assets/medflow-logo.png" alt="MedFlow AI Hospital Solution" />
+          <div>
+            <h2>Solicitar Demo</h2>
+            <p>
+              Estamos prontos para mostrar como o MedFlow pode organizar fluxos médicos, reduzir retrabalho e dar mais
+              rastreabilidade para sua instituição.
+            </p>
+            <p>Deixe seus dados e abriremos um e-mail para contato com a equipe.</p>
+          </div>
+        </div>
+        <form class="demo-form" data-demo-form>
+          <button class="modal-close" type="button" aria-label="Fechar formulário" data-demo-close>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+          </button>
+          <h2 id="demo-title">Seus dados</h2>
+          <label>
+            Nome <span>*</span>
+            <input name="nome" type="text" placeholder="Seu nome" autocomplete="name" required />
+          </label>
+          <label>
+            Empresa <span>*</span>
+            <input name="empresa" type="text" placeholder="Sua empresa" autocomplete="organization" required />
+          </label>
+          <label>
+            Cargo <span>*</span>
+            <input name="cargo" type="text" placeholder="Seu cargo" autocomplete="organization-title" required />
+          </label>
+          <label>
+            E-mail <span>*</span>
+            <input name="email" type="email" placeholder="Seu melhor e-mail" autocomplete="email" required />
+          </label>
+          <label>
+            WhatsApp <span>*</span>
+            <input name="whatsapp" type="tel" placeholder="11 91234-5678" autocomplete="tel" required />
+          </label>
+          <button class="btn btn-primary demo-submit" type="submit">Solicitar Demo</button>
+          <p class="form-note">Ao enviar, seu aplicativo de e-mail será aberto com a mensagem preenchida.</p>
+        </form>
+      </section>
+    </div>
 
     <footer class="footer">
       <div class="shell footer-grid">
