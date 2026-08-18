@@ -365,9 +365,6 @@ button {
   align-items: center;
   width: 106px;
   min-height: 48px;
-  padding: 8px;
-  border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.94);
   margin-bottom: 28px;
 }
 
@@ -1004,9 +1001,6 @@ article p {
 .demo-intro img {
   width: 230px;
   height: auto;
-  padding: 10px 12px;
-  border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.95);
 }
 
 .demo-intro h2 {
@@ -1139,9 +1133,6 @@ body.modal-open {
 .footer .brand {
   width: 210px;
   height: 62px;
-  padding: 8px 10px;
-  border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.94);
 }
 
 .footer p {
