@@ -233,8 +233,19 @@ button {
   pointer-events: none;
 }
 
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 72px 0 auto;
+  height: min(620px, 72vw);
+  background: url("assets/autivis-monogram-color.png") center / contain no-repeat;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
 .hero-grid {
   position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 1fr;
   gap: 42px;
