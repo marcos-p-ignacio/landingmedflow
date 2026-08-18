@@ -72,11 +72,11 @@ demoForm?.addEventListener("submit", (event) => {
   const email = String(data.get("email") || "").trim();
   const whatsapp = String(data.get("whatsapp") || "").trim();
 
-  const subject = "Solicitação de demonstração MedFlow";
+  const subject = "Solicitação de demonstração AutiVis Health";
   const body = [
-    "Olá, equipe MedFlow.",
+    "Olá, equipe AutiVis Health.",
     "",
-    "Tenho interesse em uma demonstração da plataforma.",
+    "Tenho interesse em uma demonstração da plataforma AutiVis Health.",
     "",
     `Nome: ${nome}`,
     `Empresa: ${empresa}`,
