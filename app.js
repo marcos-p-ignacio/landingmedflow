@@ -87,6 +87,6 @@ demoForm?.addEventListener("submit", (event) => {
     "Obrigado.",
   ].join("\n");
 
-  window.location.href = `mailto:contato@medflow.ia.br?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.location.href = `mailto:contato@autivis.ai?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   closeDemoModal();
 });
