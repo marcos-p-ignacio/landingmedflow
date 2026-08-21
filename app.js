@@ -36,6 +36,7 @@ const openDemoModal = () => {
   if (!demoModal) return;
 
   demoModal.hidden = false;
+  demoModal.scrollTop = 0;
   document.body.classList.add("modal-open");
   const firstInput = demoModal.querySelector("input");
   firstInput?.focus();

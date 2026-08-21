@@ -1001,6 +1001,7 @@ article p {
   justify-items: center;
   padding: 24px;
   overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .demo-backdrop {
@@ -1013,7 +1014,6 @@ article p {
 .demo-panel {
   position: relative;
   width: min(1340px, 100%);
-  max-height: calc(100dvh - 48px);
   min-height: 0;
   display: grid;
   grid-template-columns: 0.95fr 1.05fr;
@@ -1064,7 +1064,6 @@ article p {
   gap: 22px;
   padding: 54px 48px 48px;
   min-height: 0;
-  overflow-y: auto;
 }
 
 .demo-form h2 {
