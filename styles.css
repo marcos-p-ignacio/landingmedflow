@@ -923,6 +923,14 @@ article p {
   line-height: 1;
 }
 
+.impact-grid strong small {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.92rem;
+  line-height: 1.25;
+  color: var(--navy);
+}
+
 .impact-grid span {
   color: var(--ink-soft);
   font-weight: 700;
