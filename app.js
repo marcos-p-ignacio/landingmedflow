@@ -3,6 +3,7 @@ const menu = document.querySelector("[data-nav-menu]");
 const header = document.querySelector("[data-header]");
 const demoModal = document.querySelector("[data-demo-modal]");
 const demoForm = document.querySelector("[data-demo-form]");
+const demoStatus = document.querySelector("[data-demo-status]");
 const demoOpenButtons = document.querySelectorAll("[data-demo-open]");
 const demoCloseButtons = document.querySelectorAll("[data-demo-close]");
 
@@ -37,6 +38,10 @@ const openDemoModal = () => {
 
   demoModal.hidden = false;
   demoModal.scrollTop = 0;
+  if (demoStatus) {
+    demoStatus.textContent = "";
+    delete demoStatus.dataset.state;
+  }
   document.body.classList.add("modal-open");
   const firstInput = demoModal.querySelector("input");
   firstInput?.focus();
@@ -67,27 +72,48 @@ demoForm?.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const data = new FormData(demoForm);
-  const nome = String(data.get("nome") || "").trim();
-  const empresa = String(data.get("empresa") || "").trim();
-  const cargo = String(data.get("cargo") || "").trim();
-  const email = String(data.get("email") || "").trim();
-  const whatsapp = String(data.get("whatsapp") || "").trim();
+  const submitButton = demoForm.querySelector("button[type='submit']");
 
-  const subject = "Solicitação de demonstração AutiVis Health";
-  const body = [
-    "Olá, equipe AutiVis Health.",
-    "",
-    "Tenho interesse em uma demonstração da plataforma AutiVis Health.",
-    "",
-    `Nome: ${nome}`,
-    `Empresa: ${empresa}`,
-    `Cargo: ${cargo}`,
-    `E-mail: ${email}`,
-    `WhatsApp: ${whatsapp}`,
-    "",
-    "Obrigado.",
-  ].join("\n");
+  const payload = {
+    nome: String(data.get("nome") || "").trim(),
+    empresa: String(data.get("empresa") || "").trim(),
+    cargo: String(data.get("cargo") || "").trim(),
+    email: String(data.get("email") || "").trim(),
+    whatsapp: String(data.get("whatsapp") || "").trim(),
+    website: String(data.get("website") || "").trim(),
+  };
 
-  window.location.href = `mailto:contato@autivis.ai?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  closeDemoModal();
+  const setStatus = (message, type) => {
+    if (!demoStatus) return;
+    demoStatus.textContent = message;
+    demoStatus.dataset.state = type;
+  };
+
+  const submit = async () => {
+    submitButton?.setAttribute("disabled", "true");
+    setStatus("Enviando sua solicitação...", "loading");
+
+    try {
+      const response = await fetch("/api/demo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(result.error || "Não foi possível enviar sua solicitação agora.");
+      }
+
+      demoForm.reset();
+      setStatus("Solicitação enviada. Entraremos em contato em breve.", "success");
+    } catch (error) {
+      setStatus(error.message || "Não foi possível enviar sua solicitação agora.", "error");
+    } finally {
+      submitButton?.removeAttribute("disabled");
+    }
+  };
+
+  submit();
 });

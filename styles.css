@@ -1144,6 +1144,36 @@ article p {
   box-shadow: 0 0 0 4px rgba(20, 184, 212, 0.15);
 }
 
+.honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.demo-submit[disabled] {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.form-status {
+  min-height: 22px;
+  margin: -2px 0 -8px;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.form-status[data-state="success"] {
+  color: #047857;
+}
+
+.form-status[data-state="error"] {
+  color: #b42318;
+}
+
 .demo-submit {
   width: 100%;
   min-height: 58px;

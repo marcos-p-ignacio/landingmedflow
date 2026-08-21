@@ -1,6 +1,7 @@
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
+const demoHandler = require("./api/demo");
 
 const root = __dirname;
 const port = Number(process.env.PORT || 5173);
@@ -20,6 +21,12 @@ const types = {
 const server = http.createServer((request, response) => {
   const url = new URL(request.url, `http://${host}:${port}`);
   const pathname = decodeURIComponent(url.pathname);
+
+  if (pathname === "/api/demo") {
+    demoHandler(request, response);
+    return;
+  }
+
   const filePath = path.normalize(path.join(root, pathname === "/" ? "index.html" : pathname));
 
   if (!filePath.startsWith(root)) {
